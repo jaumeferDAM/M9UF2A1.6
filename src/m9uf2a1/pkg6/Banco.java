@@ -36,7 +36,7 @@ public class Banco {
                 System.err.println("Contenedor: error en get: " + e.getMessage());
             }
         }
-       ingresado=false;
+       ingresado=true;
         saldo -= valor;
         
         System.out.println("Retiro la cantidad de: " + valor + " y me queda un total de :" + saldo);
@@ -45,7 +45,7 @@ public class Banco {
     }
 
     public synchronized void ingresar(float value) {
-        while (ingresado==false) {
+        while (ingresado) {
             try {
                 ingresado=true;
                 wait();
